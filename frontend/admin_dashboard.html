@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard — Vivek college of commerce Institute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <div class="sidebar">
+    <div class="brand">Admin Panel</div>
+    <nav>
+      <a href="#" class="active">Dashboard</a>
+      <a href="#courses-panel">Courses</a>
+      <a href="#faqs-panel">FAQs</a>
+      <a href="#students-panel">Students</a>
+    </nav>
+    <div class="logout" id="logoutBtn">⎋ Log out</div>
+  </div>
+
+  <div class="main">
+    <h1>Dashboard</h1>
+    <p class="sub">Manage courses, FAQs, and monitor chatbot activity.</p>
+
+    <div class="error-banner" id="errorBanner"></div>
+
+    <div class="stat-grid" id="statGrid">
+      <div class="stat-card"><div class="label">Total Students</div><div class="value" id="statStudents">—</div></div>
+      <div class="stat-card"><div class="label">Total Courses</div><div class="value" id="statCourses">—</div></div>
+      <div class="stat-card"><div class="label">Total Chats</div><div class="value" id="statChats">—</div></div>
+      <div class="stat-card"><div class="label">Seats Available</div><div class="value" id="statSeats">—</div></div>
+    </div>
+
+    <div class="panel" id="courses-panel">
+      <h2>Courses</h2>
+      <div class="form-row">
+        <input type="text" id="cName" placeholder="Course name (e.g. B.Tech CSE)" />
+        <input type="text" id="cCode" placeholder="Short code (e.g. CSE)" />
+        <input type="number" id="cDuration" placeholder="Duration (years)" />
+        <input type="number" id="cTotalSeats" placeholder="Total seats" />
+        <input type="number" id="cAvailSeats" placeholder="Available seats" />
+        <input type="number" id="cFeesYear" placeholder="Fees per year (₹)" />
+        <input type="number" id="cAdmissionFee" placeholder="Admission fee (₹)" />
+        <input type="number" id="cEligibility" placeholder="Eligibility %" />
+        <input type="text" id="cNote" placeholder="Eligibility note" />
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button class="btn-small" id="addCourseBtn">+ Add Course</button>
+        <button class="btn-small secondary" id="cancelEditBtn" style="display:none;">Cancel</button>
+      </div>
+
+      <table style="margin-top:18px;">
+        <thead>
+          <tr><th>Name</th><th>Seats</th><th>Fees/yr</th><th>Eligibility</th><th></th></tr>
+        </thead>
+        <tbody id="coursesTableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="faqs-panel">
+      <h2>FAQs</h2>
+      <div class="form-row">
+        <input type="text" id="fQuestion" placeholder="Question" />
+        <input type="text" id="fKeywords" placeholder="Keywords (comma separated)" />
+        <input type="text" id="fAnswer" placeholder="Answer" />
+      </div>
+      <button class="btn-small" id="addFaqBtn">+ Add FAQ</button>
+
+      <table style="margin-top:18px;">
+        <thead><tr><th>Question</th><th>Category</th><th></th></tr></thead>
+        <tbody id="faqsTableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="students-panel">
+      <h2>Registered Students</h2>
+      <table>
+        <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th></tr></thead>
+        <tbody id="studentsTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/admin.js"></script>
+</body>
+</html>
