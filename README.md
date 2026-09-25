@@ -528,5 +528,6 @@ Example exchanges it handles out of the box:
          To provide students with an automated system for getting college-related information quickly and efficiently.
 
 # 📄 License
+
    This project is provided for educational and academic purposes.
    See `LICENSE` file for more information.
