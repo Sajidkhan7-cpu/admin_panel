@@ -1,67 +1,186 @@
-# 🎓 College Enquiry Chatbot — Final Year Project
+# 🎓 College Enquiry Chatbot
 
-An AI-powered college enquiry chatbot built with **FastAPI + Supabase
-(PostgreSQL)** on the backend and **HTML/CSS/JavaScript** on the frontend.
-Students can ask natural-language questions about **admission, fees, seat
-availability, courses offered, and eligibility percentage**, and get
-instant, accurate answers pulled directly from the college's database.
+   An intelligent **College Enquiry Chatbot** built using **FastAPI, Supabase (PostgreSQL), HTML, CSS, and JavaScript**.
+
+   The system allows students to ask questions about college **admissions, courses, fees, seat availability, eligibility, and FAQs** and receive answers from the college database.
+
+   The project also includes an **Admin Dashboard** where administrators can manage courses and FAQs.
+
 
 > Uses **Supabase** (a free hosted PostgreSQL database) instead of a local
 > MySQL/XAMPP install — no local database server to install, configure, or
 > keep running. Just paste a connection string and go.
 
----
 
-## ✨ Features
 
-- 🤖 **AI Chatbot** — keyword + fuzzy-matching intent classification (no
-  heavy ML dependency required), answers questions about:
-  - Admission process & required documents
-  - Course fees (admission fee, per-year fee, total fee, scholarships)
-  - Seat availability per course
-  - List of courses offered
-  - Eligibility percentage required, including checking a student's own
-    percentage against the cutoff
-- 🧠 **LLM fallback (OpenAI)** — optional GPT-powered layer that handles
-  chit-chat or oddly-phrased questions the rule-based engine can't
-  classify, grounded in the same course/FAQ data so it can't invent fees,
-  seats, or eligibility numbers. Disabled by default cost/API-key-free
-  until you add an `OPENAI_API_KEY` in `.env`.
+# ✨ Features
+
+- ## 🤖 Chatbot
+
+The chatbot can answer questions related to:
+
+- Admission process
+- Required admission documents
+- Courses offered
+- Course fees
+- Admission fees
+- Yearly fees
+- Total course fees
+- Scholarships
+- Seat availability
+- Eligibility percentage
+- Student percentage eligibility checking
+- Frequently Asked Questions
+- Greetings and general enquiries
+
 - 🎙️ **Voice assistant** — ask questions by speech (mic button) and hear
   answers read aloud, using the browser's built-in Web Speech API
+
 - 🔐 **JWT Authentication** for students and admins, including a
   key-protected **admin registration** page (`admin_register.html`)
 - 🗂️ **Admin Dashboard** — CRUD for courses & FAQs, live stats
-- 💬 **Chat History** stored in Supabase, viewable per student/session
-- 📄 **PDF knowledge extraction** utility for a college brochure
 - 🎨 Clean, distinctive "enquiry desk" themed UI
 
----
 
 ## 🗂️ Project Structure
 
-```
-college-chatbot/
-├── backend/            FastAPI app, models, routers, services
-├── frontend/            Static HTML/CSS/JS pages
-├── database/            PostgreSQL schema + seed data (Supabase)
-├── docs/                 Diagrams & project report (add your own)
-├── README.md
+admin-panel/
+│
+├── backend/            Pyhton,FastAPI app, models, routers, services
+│   │
+│   ├── app/
+│   │   ├── dataset/
+│   │   │   └── faq.json
+│   │   │
+│   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   ├── chat.py
+│   │   │   ├── course.py
+│   │   │   ├── faq.py
+│   │   │   └── user.py
+│   │   │
+│   │   ├── routers/
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── auth.py
+│   │   │   ├── chatbot.py
+│   │   │   ├── course.py
+│   │   │   ├── faq.py
+│   │   │   └── student.py
+│   │   │
+│   │   ├── schemas/
+│   │   │   ├── __init__.py
+│   │   │   ├── chat_schema.py
+│   │   │   ├── course_schema.py
+│   │   │   ├── faq_schema.py
+│   │   │   └── user_schema.py
+│   │   │
+│   │   ├── services/
+│   │   │   ├── __init__.py
+│   │   │   ├── chatbot_service.py
+│   │   │   ├── llm_service.py
+│   │   │   ├── nlp.py
+│   │   │   └── pdf_reader.py
+│   │   │
+│   │   ├── utils/
+│   │   │   ├── __init__.py
+│   │   │   ├── email_utils.py
+│   │   │   ├── helper.py
+│   │   │   ├── jwt_handler.py
+│   │   │   └── password.py
+│   │   │
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   └── main.py
+│   │
+│   ├── create_admin.py
+│   ├── requirements.txt
+│   └── .env
+│
+├── frontend/   HTML/CSS/JS pages
+│   │
+│   ├── assets/
+│   │   ├── css/
+│   │   │   ├── admin.css
+│   │   │   └── login.css
+│   │   │
+│   │   └── js/
+│   │       ├── admin.js
+│   │       ├── login.js
+│   │       └── verify.js
+│   │
+│   ├── admin_dashboard.html
+│   ├── admin_login.html
+│   ├── admin_register.html
+│   └── verify.html
+│
+├── database/      PostgreSQL schema + seed data (Supabase)
+│
+├── college_chatbot.sql
+├── sample_data.sql
+├── package.json
+├── package-lock.json
 ├── .gitignore
-└── LICENSE
-```
+├── LICENSE
+└── README.md
 
-See inline comments in each file for details — every module has a docstring
-explaining its purpose.
+## 👨‍💼 Admin Dashboard
 
----
+   The Admin Dashboard allows administrators to manage college information.
+
+   Admin Features
+      View dashboard statistics
+      Add courses
+      Update courses
+      Delete courses
+      Manage FAQs
+      View chatbot-related information
+      Manage college enquiry data
+
+   When course information is updated from the dashboard, the chatbot can use the updated database information.
+
+## 🛠️ Technology Stack
+
+   Backend
+      Python
+      FastAPI
+      SQLAlchemy
+      PostgreSQL
+      Supabase
+      JWT Authentication
+      bcrypt/password hashing
+      Uvicorn
+   Frontend
+      HTML5
+      CSS3
+      JavaScript
+      Web Speech API
+   Database
+      Supabase PostgreSQL
+   Optional AI
+      Google Gemini
+      Groq
+      OpenAI-compatible APIs
+
+## 🔐 Authentication
+
+   The application uses JWT authentication.
+
+   It supports authentication for:
+
+      Students
+      Administrators
+
+   Authentication features include:
+
+      Login
+      Password hashing
+      JWT tokens
+      Protected API routes
+      Admin registration protection
 
 ## 🚀 Setup Instructions
-
-### 1. Prerequisites
-- Python 3.11 or 3.12 (avoid brand-new Python releases — some packages
-  don't have pre-built wheels for them yet)
-- A free Supabase account — no credit card required
 
 ### 2. Create your Supabase project
 1. Go to https://supabase.com and sign up (GitHub/Google login works)
@@ -163,66 +282,251 @@ Example exchanges it handles out of the box:
 
 ---
 
-## 🧩 Enabling the LLM Fallback (Optional)
+## 🧠 Optional LLM Fallback
 
-The chatbot works fully on rules + FAQ with zero external calls by default.
-To turn on the AI-powered fallback for open-ended questions:
+   The chatbot can optionally use an LLM for questions that cannot be handled by the normal rule-based system.
 
-1. Get a **free** Gemini API key (no credit card): https://aistudio.google.com/apikey
-2. In `backend/.env`, set:
-   ```
-   USE_LLM_FALLBACK=True
-   OPENAI_API_KEY=your-gemini-key-here
-   ```
-   (`OPENAI_BASE_URL` and `OPENAI_MODEL` are already set to Gemini's
-   free-tier defaults — no need to touch them)
-3. Restart the server. That's it — no code changes needed.
+   The normal chatbot works without an external AI API.
 
-This project talks to the LLM through the standard OpenAI Python SDK, but
-points it at Google Gemini's OpenAI-compatible endpoint by default — since
-**OpenAI's own API has no free tier** (it requires billing setup), while
-Gemini offers a genuinely free tier (~1,500 requests/day, no card needed).
+   The optional LLM layer can be configured using providers that support an OpenAI-compatible API.
 
-**Want a different provider?** Just change the three `.env` values —
-no code changes:
+   For example:
 
-| Provider | `OPENAI_BASE_URL` | `OPENAI_MODEL` | Get a key |
-|---|---|---|---|
-| Google Gemini (default, free) | `https://generativelanguage.googleapis.com/v1beta/openai/` | `gemini-2.5-flash` | https://aistudio.google.com/apikey |
-| Groq (free, very fast) | `https://api.groq.com/openai/v1` | `llama-3.3-70b-versatile` | https://console.groq.com/keys |
-| OpenAI (paid) | *(leave blank)* | `gpt-5.4-mini` | https://platform.openai.com/api-keys |
+      Google Gemini
+      Groq
+      OpenAI
 
-Model names and free-tier limits change over time — double check the
-provider's docs if something stops working after a few months.
+   The LLM fallback is disabled by default.
 
-If the key is missing or the API call fails for any reason, the chatbot
-automatically degrades to its default rule-based message — it never
-breaks or throws an error to the student.
+## 🎙️ Voice Assistant
+
+   The frontend supports browser-based voice features using the Web Speech API.
+
+   Users can:
+
+      Ask questions using their microphone.
+      Convert speech into text.
+      Receive chatbot answers.
+      Listen to answers using text-to-speech.
+
+## ⚙️ Requirements
+
+   Before running the project, install:
+
+      Python 3.11 or 3.12
+      Git
+      Supabase account
+      Internet connection
+
+## 🔑 Database Configuration
+
+      Create or edit:
+
+      backend/.env
+
+      Example:
+
+         DATABASE_URL=your_supabase_postgresql_connection_string
+
+         SECRET_KEY=your_long_random_secret_key
+
+         ADMIN_REGISTRATION_KEY=your_admin_registration_key
+
+         USE_LLM_FALLBACK=False
+
+         OPENAI_API_KEY=
+         OPENAI_BASE_URL=
+         OPENAI_MODEL=
+
+      Your .gitignore should contain:
+
+         .env
+         venv/
+         __pycache__/
+         *.pyc
+         node_modules/
+
+## 🗄️ Supabase Database Setup
+
+   This project uses Supabase PostgreSQL instead of a local MySQL/XAMPP database.
+
+   Step 1 — Create Supabase Project
+
+      Create a project in Supabase.
+
+      After creating the project, open:
+
+      SQL Editor
+      Step 2 — Create Database Tables
+
+      Run:
+
+         college_chatbot.sql
+
+      in the Supabase SQL Editor.
+
+      Then run:
+
+         sample_data.sql
+
+      This creates and populates the required database tables.
+
+## 🐍 Backend Installation
+
+   Open PowerShell in the project folder:
+
+   cd D:\admin-panel\backend
+
+   Create a virtual environment:
+
+      python -m venv venv
+
+   ctivate it:
+
+      .\venv\Scripts\Activate.ps1
+
+   Install dependencies:
+
+      pip install -r requirements.txt
+
+## 👤 Create Admin Account
+
+   After configuring the database, run:
+
+      python create_admin.py
+
+   Follow the instructions to create the first administrator account.
+
+   Passwords should be securely hashed before being stored in the database.
+
+## 🌐 Run the Frontend
+
+   The frontend is located inside:
+
+      frontend/
+
+   If the FastAPI application mounts the frontend as static files, the website can be accessed through:
+
+      http://localhost:8080/
+
+   You can also use VS Code Live Server for frontend development if the JavaScript API configuration points to the backend:
+
+      http://localhost:8080
+
+## ▶️ Run the Backend
+
+   From the backend directory:
+
+      python -m uvicorn app.main:app --reload --port 8080
+
+   The backend will run at:
+
+      http://localhost:8080
+
+## 📚 API Documentation
+
+   FastAPI automatically provides interactive API documentation.
+
+   Open:
+
+      http://localhost:8080/docs
+
+   You can use the Swagger interface to test API endpoints.
 
 ## 🔑 Admin Registration
 
-Beyond `create_admin.py` (CLI), there's also a web form at
-`admin_register.html`. It requires the `ADMIN_REGISTRATION_KEY` set in
-`backend/.env` — anyone creating an admin account must know this key, so
-random visitors can't self-promote to admin. Change this key before
-deploying anywhere public.
+   Beyond `create_admin.py` (CLI), there's also a web form at
+   `admin_register.html`. It requires the `email verification` set in
+   `backend/.env` — anyone creating an admin account must know this
+   so
+   random visitors can't self-promote to admin. Change this key before
+   deploying anywhere public.
 
----
 
-## 🛠️ Extending the Project
 
-- **NLP upgrade**: swap the keyword/fuzzy matcher in `services/nlp.py` for
-  a proper intent-classification model (e.g. spaCy or a small transformer).
-- **PDF knowledge base**: drop a real brochure at
-  `backend/app/dataset/college.pdf` and wire `services/pdf_reader.py`
-  into `chatbot_service.py` as an additional fallback source.
-- **Admissions tracking**: the `admissions` table in the SQL schema is
-  ready for a "Apply Now" flow that links a student to a course.
+## 🤖 Optional LLM Configuration
 
----
+   The rule-based chatbot works without an LLM.
 
-## 📄 License
+   To enable an OpenAI-compatible LLM provider, update:
 
-See `LICENSE`.
-#   c o l l e g e _ p r o j e c t  
- 
+      USE_LLM_FALLBACK=True
+      OPENAI_API_KEY=your_api_key
+      OPENAI_BASE_URL=provider_base_url
+      OPENAI_MODEL=model_name
+
+   The exact API endpoint, model name, pricing, and free-tier limits depend on the provider and may change.
+
+   After changing .env, restart the backend.
+
+## 🔒 Security
+
+   The project includes several security mechanisms:
+
+      JWT authentication
+      Password hashing
+      Protected admin routes
+      Admin registration key
+      Environment variables for secrets
+      Database-backed authentication
+
+## 🧩 Future Enhancements
+
+   Possible future improvements include:
+
+      Advanced NLP/intent classification
+      RAG-based college knowledge system
+      PDF document question answering
+      Student admission application system
+      Email notifications
+      Student profile management
+      Admin analytics
+      Course recommendation system
+      Multi-language chatbot
+      WhatsApp integration
+      Mobile application
+      Deployment to cloud hosting
+
+## 🧪 Development
+
+   Useful development command:
+
+      python -m uvicorn app.main:app --reload --port 8080
+
+   Check the API:
+
+      http://localhost:8080/docs
+
+## 📌 Important Project Information
+
+   Backend
+      FastAPI
+   Database
+      Supabase PostgreSQL
+   Frontend
+      HTML
+      CSS
+      JavaScript
+   Authentication
+      JWT
+   Chatbot
+      Keyword Matching
+      +
+      Fuzzy Matching
+      +
+      FAQ Database
+      +
+      Optional LLM Fallback
+
+## 👨‍🎓Project
+
+   Project Title:
+
+      College Enquiry Chatbot
+
+      Purpose:
+         To provide students with an automated system for getting college-related information quickly and efficiently.
+
+# 📄 License
+   This project is provided for educational and academic purposes.
+   See `LICENSE` file for more information.
