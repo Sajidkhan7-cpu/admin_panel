@@ -11,7 +11,51 @@
 > MySQL/XAMPP install — no local database server to install, configure, or
 > keep running. Just paste a connection string and go.
 
+## 📦 Package Installation
 
+   From the `backend` folder:
+
+   **powershell**
+      cd backend
+
+      Create virtual environment:
+
+         python -m venv venv
+
+      Activate it:
+
+         .\venv\Scripts\Activate.ps1
+
+      Install all required packages:
+
+         pip install -r requirements.txt
+
+   **Or install manually**
+
+      pip install fastapi
+      pip install uvicorn
+      pip install sqlalchemy
+      pip install psycopg2-binary
+      pip install python-dotenv
+      pip install python-jose
+      pip install passlib
+      pip install bcrypt
+      pip install python-multipart
+      pip install openai
+      pip install rapidfuzz
+      pip install pypdf
+
+   **Check installed packages**
+
+      pip list
+
+   **Update pip**
+
+      python -m pip install --upgrade pip
+
+   **Recommended:** 
+   
+      Use `pip install -r requirements.txt` because it installs the exact packages configured for your project.
 
 # ✨ Features
 
