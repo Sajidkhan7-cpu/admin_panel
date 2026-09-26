@@ -88,86 +88,86 @@ The chatbot can answer questions related to:
 
 ## 🗂️ Project Structure
 
-admin-panel/
-│
-├── backend/            Pyhton,FastAPI app, models, routers, services
-│   │
-│   ├── app/
-│   │   ├── dataset/
-│   │   │   └── faq.json
-│   │   │
-│   │   ├── models/
-│   │   │   ├── __init__.py
-│   │   │   ├── chat.py
-│   │   │   ├── course.py
-│   │   │   ├── faq.py
-│   │   │   └── user.py
-│   │   │
-│   │   ├── routers/
-│   │   │   ├── __init__.py
-│   │   │   ├── admin.py
-│   │   │   ├── auth.py
-│   │   │   ├── chatbot.py
-│   │   │   ├── course.py
-│   │   │   ├── faq.py
-│   │   │   └── student.py
-│   │   │
-│   │   ├── schemas/
-│   │   │   ├── __init__.py
-│   │   │   ├── chat_schema.py
-│   │   │   ├── course_schema.py
-│   │   │   ├── faq_schema.py
-│   │   │   └── user_schema.py
-│   │   │
-│   │   ├── services/
-│   │   │   ├── __init__.py
-│   │   │   ├── chatbot_service.py
-│   │   │   ├── llm_service.py
-│   │   │   ├── nlp.py
-│   │   │   └── pdf_reader.py
-│   │   │
-│   │   ├── utils/
-│   │   │   ├── __init__.py
-│   │   │   ├── email_utils.py
-│   │   │   ├── helper.py
-│   │   │   ├── jwt_handler.py
-│   │   │   └── password.py
-│   │   │
-│   │   ├── __init__.py
-│   │   ├── config.py
-│   │   ├── database.py
-│   │   └── main.py
-│   │
-│   ├── create_admin.py
-│   ├── requirements.txt
-│   └── .env
-│
-├── frontend/   HTML/CSS/JS pages
-│   │
-│   ├── assets/
-│   │   ├── css/
-│   │   │   ├── admin.css
-│   │   │   └── login.css
-│   │   │
-│   │   └── js/
-│   │       ├── admin.js
-│   │       ├── login.js
-│   │       └── verify.js
-│   │
-│   ├── admin_dashboard.html
-│   ├── admin_login.html
-│   ├── admin_register.html
-│   └── verify.html
-│
-├── database/      PostgreSQL schema + seed data (Supabase)
-│
-├── college_chatbot.sql
-├── sample_data.sql
-├── package.json
-├── package-lock.json
-├── .gitignore
-├── LICENSE
-└── README.md
+      admin-panel/
+      │
+      ├── backend/            Pyhton,FastAPI app, models, routers, services
+      │   │
+      │   ├── app/
+      │   │   ├── dataset/
+      │   │   │   └── faq.json
+      │   │   │
+      │   │   ├── models/
+      │   │   │   ├── __init__.py
+      │   │   │   ├── chat.py
+      │   │   │   ├── course.py
+      │   │   │   ├── faq.py
+      │   │   │   └── user.py
+      │   │   │
+      │   │   ├── routers/
+      │   │   │   ├── __init__.py
+      │   │   │   ├── admin.py
+      │   │   │   ├── auth.py
+      │   │   │   ├── chatbot.py
+      │   │   │   ├── course.py
+      │   │   │   ├── faq.py
+      │   │   │   └── student.py
+      │   │   │
+      │   │   ├── schemas/
+      │   │   │   ├── __init__.py
+      │   │   │   ├── chat_schema.py
+      │   │   │   ├── course_schema.py
+      │   │   │   ├── faq_schema.py
+      │   │   │   └── user_schema.py
+      │   │   │
+      │   │   ├── services/
+      │   │   │   ├── __init__.py
+      │   │   │   ├── chatbot_service.py
+      │   │   │   ├── llm_service.py
+      │   │   │   ├── nlp.py
+      │   │   │   └── pdf_reader.py
+      │   │   │
+      │   │   ├── utils/
+      │   │   │   ├── __init__.py
+      │   │   │   ├── email_utils.py
+      │   │   │   ├── helper.py
+      │   │   │   ├── jwt_handler.py
+      │   │   │   └── password.py
+      │   │   │
+      │   │   ├── __init__.py
+      │   │   ├── config.py
+      │   │   ├── database.py
+      │   │   └── main.py
+      │   │
+      │   ├── create_admin.py
+      │   ├── requirements.txt
+      │   └── .env
+      │
+      ├── frontend/   HTML/CSS/JS pages
+      │   │
+      │   ├── assets/
+      │   │   ├── css/
+      │   │   │   ├── admin.css
+      │   │   │   └── login.css
+      │   │   │
+      │   │   └── js/
+      │   │       ├── admin.js
+      │   │       ├── login.js
+      │   │       └── verify.js
+      │   │
+      │   ├── admin_dashboard.html
+      │   ├── admin_login.html
+      │   ├── admin_register.html
+      │   └── verify.html
+      │
+      ├── database/      PostgreSQL schema + seed data (Supabase)
+      │
+      ├── college_chatbot.sql
+      ├── sample_data.sql
+      ├── package.json
+      ├── package-lock.json
+      ├── .gitignore
+      ├── LICENSE
+      └── README.md
 
 ## 👨‍💼 Admin Dashboard
 
