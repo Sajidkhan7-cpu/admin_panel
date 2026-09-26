@@ -226,14 +226,14 @@ admin-panel/
 
 ## 🚀 Setup Instructions
 
-### 2. Create your Supabase project
+### Create your Supabase project
 1. Go to https://supabase.com and sign up (GitHub/Google login works)
 2. Click **New Project**
 3. Pick any name, set a **database password** (write it down — you'll
    need it in step 4), choose the region closest to you
 4. Wait ~2 minutes for the project to finish provisioning
 
-### 3. Create the tables
+### Create the tables
 1. In your Supabase project, open the **SQL Editor** (left sidebar)
 2. Click **New query**, paste the entire contents of
    `database/college_chatbot.sql`, click **Run**
@@ -243,7 +243,7 @@ admin-panel/
    see `users`, `courses`, `faqs`, `chat_history`, and `admissions`
    tables, with `courses` and `faqs` already containing 7 rows each
 
-### 4. Get your connection string
+### Get your connection string
 1. In Supabase: **Project Settings** (gear icon) → **Database**
 2. Under **Connection string**, select the **URI** tab
 3. Copy it — it looks like:
@@ -257,7 +257,7 @@ admin-panel/
 > pooler works over standard IPv4 and is what the URI tab gives you by
 > default.
 
-### 5. Configure environment variables
+### Configure environment variables
 Edit `backend/.env`:
 ```
 DATABASE_URL=postgresql://postgres.xxxxxxxxxxxx:your-actual-password@aws-0-xx-xxxx-1.pooler.supabase.com:6543/postgres
@@ -266,7 +266,7 @@ SECRET_KEY=change_this_to_a_long_random_secret_key
 Paste your real connection string from step 4 as-is — the app
 automatically handles the driver prefix for you.
 
-### 6. Install dependencies
+### Install dependencies
 ```bash
 cd backend
 python -m venv venv
@@ -274,14 +274,14 @@ source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 7. Create your first admin account
+### Create your first admin account
 ```bash
 python create_admin.py
 ```
 This safely bcrypt-hashes the password — never insert admin rows with
 plaintext or fake password hashes directly into SQL.
 
-### 8. Run the server
+### Run the server
 ```bash
 uvicorn app.main:app --reload --port 8080
 ```
@@ -300,7 +300,6 @@ separate web server needed.
 > That works too — each JS file auto-detects this and points API calls at
 > `http://localhost:8080` instead of using relative paths.
 
----
 
 ## 🧠 How the Chatbot Works
 
