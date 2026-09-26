@@ -1,65 +1,48 @@
-/* ==========================================================
-   admin.css
-   Greenfield Institute — Admin Dashboard
-   Theme: Aurora Purple + Electric Blue + Cyan + Pink
-   Responsive: Mobile | Tablet | Laptop | Desktop
-   ========================================================== */
+/* ============================================================
+GREENFIELD INSTITUTE — ADMIN DASHBOARD
+DARK CLAYMORPHISM UI
+FULLY RESPONSIVE
+NO SIDEBAR SCROLLBAR
+============================================================ */
 
+/* ============================================================
 
-/* ==========================================================
-   ROOT VARIABLES
-   ========================================================== */
+1. ROOT VARIABLES
+   ============================================================ */
 
 :root {
+    --purple: #7561d8;
+    --purple-dark: #403478;
+    --purple-deep: #30265f;
+    --purple-light: #9b88ed;
 
-    --purple-950: #16082f;
-    --purple-900: #211047;
-    --purple-800: #35146b;
-    --purple-700: #6d28d9;
-    --purple: #8b5cf6;
-    --purple-light: #a78bfa;
-    --purple-soft: #f3e8ff;
+    --blue: #5276c9;
+    --cyan: #4ab8ca;
 
-    --blue: #3b82f6;
-    --blue-light: #60a5fa;
-    --blue-soft: #eff6ff;
+    --pink: #dc709f;
+    --green: #59b98a;
+    --red: #d95e6c;
+    --orange: #dc8b50;
 
-    --cyan: #06b6d4;
-    --cyan-light: #22d3ee;
-    --cyan-soft: #ecfeff;
+    --background: #e4e1ef;
 
-    --pink: #ec4899;
-    --pink-light: #f472b6;
-    --pink-soft: #fdf2f8;
+    --surface: #eeecf5;
+    --surface-light: #f7f6fb;
 
-    --green: #10b981;
-    --green-soft: #ecfdf5;
+    --text: #39344e;
+    --text-muted: #777286;
 
-    --red: #ef4444;
-    --red-dark: #dc2626;
-    --red-soft: #fef2f2;
-
-    --orange: #f97316;
-    --orange-soft: #fff7ed;
-
-    --yellow: #eab308;
-    --yellow-soft: #fefce8;
-
-    --text: #211936;
-    --text-muted: #716b80;
-    --text-light: #a29bad;
-
-    --paper: #f7f6fb;
     --white: #ffffff;
 
-    --border: #e5e0ee;
-    --border-light: #eeeaf4;
-
-    --radius: 16px;
+    --radius-xl: 28px;
+    --radius-lg: 24px;
+    --radius-md: 18px;
+    --radius-sm: 13px;
 
     --serif:
         "Source Serif 4",
         Georgia,
+        "Times New Roman",
         serif;
 
     --sans:
@@ -73,12 +56,29 @@
         "IBM Plex Mono",
         "Courier New",
         monospace;
+
+    /* Clay shadows */
+
+    --clay-shadow:
+        12px 12px 25px rgba(55, 48, 91, 0.18),
+        -10px -10px 22px rgba(255, 255, 255, 0.82);
+
+    --clay-shadow-small:
+        7px 7px 15px rgba(55, 48, 91, 0.16),
+        -6px -6px 13px rgba(255, 255, 255, 0.82);
+
+    --clay-shadow-hover:
+        15px 15px 30px rgba(55, 48, 91, 0.22),
+        -12px -12px 25px rgba(255, 255, 255, 0.92);
+
+    --clay-shadow-inset:
+        inset 5px 5px 12px rgba(55, 48, 91, 0.13),
+        inset -5px -5px 12px rgba(255, 255, 255, 0.85);
 }
 
-
-/* ==========================================================
-   RESET
-   ========================================================== */
+/* ============================================================
+2. RESET
+============================================================ */
 
 *,
 *::before,
@@ -86,39 +86,49 @@
     box-sizing: border-box;
 }
 
-
 html {
+    width: 100%;
+    min-height: 100%;
+
     scroll-behavior: smooth;
+
+    overflow-x: hidden;
 }
 
-
 body {
+    width: 100%;
+    min-height: 100vh;
+
     margin: 0;
-
-    background:
-        radial-gradient(
-            circle at 5% 5%,
-            rgba(139, 92, 246, 0.08),
-            transparent 25%
-        ),
-
-        radial-gradient(
-            circle at 95% 20%,
-            rgba(6, 182, 212, 0.07),
-            transparent 25%
-        ),
-
-        var(--paper);
 
     color: var(--text);
 
     font-family: var(--sans);
 
-    line-height: 1.55;
+    background:
+        radial-gradient(
+            circle at 8% 8%,
+            rgba(117, 97, 216, 0.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 92% 20%,
+            rgba(74, 184, 202, 0.13),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(220, 112, 159, 0.10),
+            transparent 30%
+        ),
+        var(--background);
 
     overflow-x: hidden;
-}
 
+    -webkit-font-smoothing: antialiased;
+
+    text-rendering: optimizeLegibility;
+}
 
 button,
 input,
@@ -127,133 +137,172 @@ select {
     font-family: inherit;
 }
 
-
 button {
     cursor: pointer;
 }
 
-
 a {
     color: inherit;
+    text-decoration: none;
 }
 
+img,
+svg {
+    max-width: 100%;
+}
 
-/* ==========================================================
-   ADMIN SHELL
-   ========================================================== */
+::selection {
+    background: rgba(117, 97, 216, 0.25);
+}
+
+/* ============================================================
+3. ADMIN SHELL
+============================================================ */
 
 .admin-shell {
+    width: 100%;
+    min-height: 100vh;
 
     display: grid;
 
     grid-template-columns:
-        250px minmax(0, 1fr);
+        245px minmax(0, 1fr);
 
-    min-height: 100vh;
+    gap: 20px;
+
+    padding: 20px;
+
+    margin: 0 auto;
 }
 
-
-/* ==========================================================
-   SIDEBAR
-   ========================================================== */
+/* ============================================================
+4. SIDEBAR
+============================================================ */
 
 .sidebar {
+    position: fixed;
 
-    position: sticky;
+    top: 20px;
 
-    top: 0;
+    left: 20px;
 
-    height: 100vh;
+    width: 245px;
+
+    height: calc(100vh - 40px);
+
+    min-height: 540px;
 
     display: flex;
 
     flex-direction: column;
 
-    padding:
-        25px 17px;
+    padding: 22px 15px;
 
     color: #ffffff;
 
     background:
+        radial-gradient(
+            circle at 15% 5%,
+            rgba(255, 255, 255, 0.13),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(71, 124, 208, 0.22),
+            transparent 30%
+        ),
         linear-gradient(
-            180deg,
-            #211047 0%,
-            #16082f 55%,
-            #101a3c 100%
+            150deg,
+            #463879 0%,
+            #3b306d 45%,
+            #304779 100%
         );
 
-    box-shadow:
-        10px 0 35px
-        rgba(33, 16, 71, 0.12);
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.20);
 
-    overflow-y: auto;
+    border-radius:
+        27px;
+
+    box-shadow:
+        14px 16px 32px rgba(44, 36, 79, 0.28),
+        -8px -8px 22px rgba(255, 255, 255, 0.55);
 
     z-index: 20;
+
+    /*
+       IMPORTANT:
+       No scrollbar in sidebar.
+    */
+
+    overflow: hidden;
+
+    scrollbar-width: none;
+
+    -ms-overflow-style: none;
 }
 
+/* Chrome / Edge / Safari */
 
-/* ==========================================================
-   SIDEBAR GLOW
-   ========================================================== */
+.sidebar::-webkit-scrollbar {
+    display: none;
+
+    width: 0;
+    height: 0;
+}
+
+/* ============================================================
+5. SIDEBAR DECORATIVE EFFECTS
+============================================================ */
 
 .sidebar::before {
-
     content: "";
 
     position: absolute;
 
-    top: -130px;
+    width: 210px;
+    height: 210px;
 
-    left: -130px;
-
-    width: 300px;
-
-    height: 300px;
+    top: -100px;
+    left: -80px;
 
     border-radius: 50%;
 
     background:
-        rgba(139, 92, 246, 0.18);
+        rgba(153, 137, 235, 0.20);
 
-    filter:
-        blur(50px);
+    filter: blur(35px);
 
     pointer-events: none;
 }
-
 
 .sidebar::after {
-
     content: "";
 
     position: absolute;
 
-    right: -100px;
+    width: 210px;
+    height: 210px;
 
-    bottom: -120px;
-
-    width: 280px;
-
-    height: 280px;
+    right: -90px;
+    bottom: -90px;
 
     border-radius: 50%;
 
     background:
-        rgba(6, 182, 212, 0.12);
+        rgba(64, 127, 206, 0.20);
 
-    filter:
-        blur(55px);
+    filter: blur(35px);
 
     pointer-events: none;
 }
 
-
-/* ==========================================================
-   SIDEBAR BRAND
-   ========================================================== */
+/* ============================================================
+6. SIDEBAR BRAND
+============================================================ */
 
 .sidebar .brand {
-
     position: relative;
 
     z-index: 2;
@@ -264,17 +313,16 @@ a {
 
     gap: 10px;
 
+    min-width: 0;
+
     margin:
-        0 7px 30px;
+        0 6px 22px;
 
-    padding-bottom:
-        20px;
+    padding:
+        0 5px 18px;
 
-    border-bottom:
-        1px solid
-        rgba(255,255,255,0.09);
-
-    color: #ffffff;
+    color:
+        #ffffff;
 
     font-family:
         var(--serif);
@@ -284,191 +332,73 @@ a {
 
     font-weight:
         700;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.17);
 }
 
-
 .sidebar .brand::before {
-
     content: "";
 
-    width: 10px;
+    width: 13px;
+    height: 13px;
 
-    height: 10px;
-
-    flex-shrink: 0;
+    flex:
+        0 0 13px;
 
     border-radius: 50%;
 
     background:
         linear-gradient(
             135deg,
-            var(--purple-light),
-            var(--cyan-light)
+            #ffffff,
+            #a9eff9
         );
 
     box-shadow:
-        0 0 15px
-        rgba(139, 92, 246, 0.8);
+        3px 3px 8px rgba(18, 14, 48, 0.35),
+        -2px -2px 6px rgba(255, 255, 255, 0.65);
 }
 
-
-/* ==========================================================
-   NAVIGATION
-   ========================================================== */
+/* ============================================================
+7. SIDEBAR NAVIGATION
+============================================================ */
 
 .sidebar nav {
-
     position: relative;
 
     z-index: 2;
-}
 
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    min-width: 0;
+}
 
 .sidebar nav a {
-
     position: relative;
 
     display: flex;
 
     align-items: center;
 
-    min-height: 44px;
+    min-height: 45px;
 
-    margin-bottom: 6px;
-
-    padding:
-        10px 13px;
+    padding: 10px 14px;
 
     border:
-        1px solid transparent;
+        1px solid
+        rgba(255, 255, 255, 0.12);
 
     border-radius:
-        11px;
+        15px;
 
     color:
-        rgba(255,255,255,0.68);
-
-    text-decoration:
-        none;
-
-    font-size:
-        13.5px;
-
-    font-weight:
-        500;
-
-    transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease,
-        border-color 0.25s ease;
-}
-
-
-/* Active indicator */
-
-.sidebar nav a::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-
-    top: 50%;
-
-    width: 3px;
-
-    height: 0;
-
-    border-radius:
-        0 5px 5px 0;
-
-    background:
-        linear-gradient(
-            180deg,
-            var(--purple-light),
-            var(--cyan-light)
-        );
-
-    transform:
-        translateY(-50%);
-
-    transition:
-        height 0.25s ease;
-}
-
-
-.sidebar nav a:hover {
-
-    color:
-        #ffffff;
-
-    background:
-        rgba(255,255,255,0.07);
-
-    border-color:
-        rgba(255,255,255,0.06);
-
-    transform:
-        translateX(3px);
-}
-
-
-.sidebar nav a.active {
-
-    color:
-        #ffffff;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(139, 92, 246, 0.22),
-            rgba(59, 130, 246, 0.08)
-        );
-
-    border-color:
-        rgba(167,139,250,0.18);
-
-    box-shadow:
-        inset 0 0 20px
-        rgba(139,92,246,0.05);
-}
-
-
-.sidebar nav a.active::before {
-
-    height:
-        24px;
-}
-
-
-/* ==========================================================
-   LOGOUT
-   ========================================================== */
-
-.sidebar .logout {
-
-    position: relative;
-
-    z-index: 2;
-
-    display: flex;
-
-    align-items: center;
-
-    min-height: 42px;
-
-    margin-top: auto;
-
-    padding:
-        10px 13px;
-
-    border-radius:
-        10px;
-
-    color:
-        #f9a8d4;
+        rgba(255, 255, 255, 0.76);
 
     font-size:
         13px;
@@ -476,52 +406,124 @@ a {
     font-weight:
         600;
 
-    cursor:
-        pointer;
+    white-space:
+        nowrap;
 
     transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease;
+        transform 0.22s ease,
+        background 0.22s ease,
+        box-shadow 0.22s ease,
+        color 0.22s ease;
 }
 
-
-.sidebar .logout:hover {
-
+.sidebar nav a:hover {
     color:
         #ffffff;
 
     background:
-        rgba(236,72,153,0.13);
+        rgba(255, 255, 255, 0.10);
 
     transform:
-        translateX(3px);
+        translateX(4px);
+
+    box-shadow:
+        5px 5px 12px rgba(20, 15, 48, 0.20),
+        -4px -4px 10px rgba(255, 255, 255, 0.08);
 }
 
+.sidebar nav a.active {
+    color:
+        #ffffff;
 
-/* ==========================================================
-   MAIN
-   ========================================================== */
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.19),
+            rgba(255, 255, 255, 0.08)
+        );
+
+    border-color:
+        rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        inset 4px 4px 9px rgba(25, 18, 62, 0.18),
+        inset -4px -4px 9px rgba(255, 255, 255, 0.10),
+        4px 5px 10px rgba(24, 19, 57, 0.12);
+}
+
+/* ============================================================
+8. LOGOUT
+============================================================ */
+
+.sidebar .logout {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    min-height: 43px;
+
+    width: 100%;
+
+    margin-top: auto;
+
+    padding: 10px 14px;
+
+    border: 0;
+
+    border-radius: 14px;
+
+    color:
+        #ffdce9;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    transition:
+        0.22s ease;
+}
+
+.sidebar .logout:hover {
+    color:
+        #ffffff;
+
+    background:
+        rgba(220, 112, 159, 0.16);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        5px 6px 13px rgba(22, 16, 52, 0.20);
+}
+
+/* ============================================================
+9. MAIN
+============================================================ */
 
 .main {
+    grid-column: 2;
 
-    min-width:
-        0;
+    width: 100%;
+
+    min-width: 0;
 
     padding:
-        clamp(24px, 4vw, 42px)
-        clamp(20px, 4vw, 50px);
+        clamp(20px, 3vw, 40px);
 }
 
-
-/* ==========================================================
-   MAIN HEADER
-   ========================================================== */
-
 .main h1 {
-
     margin:
-        0 0 5px;
+        0 0 6px;
 
     color:
         var(--text);
@@ -530,7 +532,7 @@ a {
         var(--serif);
 
     font-size:
-        clamp(25px, 3vw, 34px);
+        clamp(27px, 3vw, 38px);
 
     font-weight:
         700;
@@ -539,9 +541,7 @@ a {
         1.2;
 }
 
-
 .main p.sub {
-
     margin:
         0 0 30px;
 
@@ -552,151 +552,143 @@ a {
         14px;
 }
 
-
-/* ==========================================================
-   STAT GRID
-   ========================================================== */
+/* ============================================================
+10. STAT GRID
+============================================================ */
 
 .stat-grid {
+    width: 100%;
 
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         repeat(4, minmax(0, 1fr));
 
     gap:
-        17px;
+        20px;
 
     margin-bottom:
         30px;
 }
 
-
-/* ==========================================================
-   STAT CARD
-   ========================================================== */
+/* ============================================================
+11. STAT CARDS
+============================================================ */
 
 .stat-card {
+    position: relative;
 
-    position:
-        relative;
+    min-width: 0;
 
-    min-width:
-        0;
+    min-height: 145px;
 
     padding:
-        20px;
+        22px;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
     border:
         1px solid
-        var(--border);
+        rgba(255, 255, 255, 0.70);
 
     border-radius:
-        var(--radius);
+        24px;
 
     background:
-        rgba(255,255,255,0.88);
+        linear-gradient(
+            145deg,
+            #f9f8fc,
+            #e7e5ef
+        );
 
     box-shadow:
-        0 8px 25px
-        rgba(33,16,71,0.05);
+        var(--clay-shadow);
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
+        transform 0.28s ease,
+        box-shadow 0.28s ease;
 
     animation:
-        cardAppear 0.6s ease both;
+        cardAppear 0.55s ease both;
 }
 
+.stat-card::before {
+    content: "";
 
-/* Different decorative glow */
+    position: absolute;
+
+    top: 10px;
+    left: 15px;
+
+    width: 45%;
+    height: 25px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.45);
+
+    filter:
+        blur(10px);
+
+    pointer-events:
+        none;
+}
+
+.stat-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    right: -45px;
+    top: -45px;
+
+    border-radius: 50%;
+
+    opacity:
+        0.13;
+}
 
 .stat-card:nth-child(1)::after {
-
     background:
         var(--purple);
 }
 
 .stat-card:nth-child(2)::after {
-
     background:
         var(--blue);
 }
 
 .stat-card:nth-child(3)::after {
-
     background:
         var(--cyan);
 }
 
 .stat-card:nth-child(4)::after {
-
     background:
         var(--pink);
 }
 
-
-.stat-card::after {
-
-    content: "";
-
-    position:
-        absolute;
-
-    width:
-        90px;
-
-    height:
-        90px;
-
-    right:
-        -45px;
-
-    top:
-        -45px;
-
-    border-radius:
-        50%;
-
-    opacity:
-        0.10;
-
-    filter:
-        blur(4px);
-}
-
-
 .stat-card:hover {
-
     transform:
-        translateY(-4px);
-
-    border-color:
-        #d7ccef;
+        translateY(-6px);
 
     box-shadow:
-        0 16px 35px
-        rgba(33,16,71,0.09);
+        var(--clay-shadow-hover);
 }
 
-
-/* ==========================================================
-   STAT LABEL
-   ========================================================== */
-
 .stat-card .label {
+    position: relative;
 
-    display:
-        block;
+    z-index: 1;
+
+    display: block;
 
     color:
-        var(--purple-700);
+        var(--purple-dark);
 
     font-family:
         var(--mono);
@@ -705,48 +697,37 @@ a {
         10px;
 
     font-weight:
-        600;
+        700;
 
     letter-spacing:
         1.2px;
-
-    line-height:
-        1.4;
 
     text-transform:
         uppercase;
 }
 
-
 .stat-card:nth-child(2) .label {
-
     color:
-        var(--blue);
+        #4f70c0;
 }
-
 
 .stat-card:nth-child(3) .label {
-
     color:
-        var(--cyan);
+        #208fa1;
 }
-
 
 .stat-card:nth-child(4) .label {
-
     color:
-        var(--pink);
+        #c55685;
 }
 
-
-/* ==========================================================
-   STAT VALUE
-   ========================================================== */
-
 .stat-card .value {
+    position: relative;
+
+    z-index: 1;
 
     margin-top:
-        7px;
+        8px;
 
     color:
         var(--text);
@@ -755,7 +736,7 @@ a {
         var(--serif);
 
     font-size:
-        clamp(25px, 3vw, 34px);
+        clamp(27px, 3vw, 36px);
 
     font-weight:
         700;
@@ -764,65 +745,60 @@ a {
         1;
 }
 
-
-/* ==========================================================
-   PANEL
-   ========================================================== */
+/* ============================================================
+12. PANELS
+============================================================ */
 
 .panel {
+    position: relative;
 
-    position:
-        relative;
+    width: 100%;
+
+    min-width: 0;
 
     margin-bottom:
-        24px;
+        25px;
 
     padding:
-        clamp(17px, 3vw, 24px);
+        clamp(18px, 3vw, 26px);
 
-    overflow:
-        hidden;
+    overflow-x:
+        auto;
 
     border:
         1px solid
-        var(--border);
+        rgba(255, 255, 255, 0.75);
 
     border-radius:
-        var(--radius);
+        25px;
 
     background:
-        rgba(255,255,255,0.94);
+        linear-gradient(
+            145deg,
+            #f8f7fc,
+            #e6e4ee
+        );
 
     box-shadow:
-        0 8px 28px
-        rgba(33,16,71,0.045);
+        var(--clay-shadow);
 
     animation:
-        panelAppear 0.7s ease both;
+        panelAppear 0.65s ease both;
 }
 
-
 .panel::before {
-
     content: "";
 
-    position:
-        absolute;
+    position: absolute;
 
-    top:
-        0;
+    top: 0;
+    left: 28px;
 
-    left:
-        24px;
-
-    width:
-        70px;
-
-    height:
-        3px;
+    width: 75px;
+    height: 5px;
 
     border-radius:
-        0 0 8px 8px;
+        0 0 10px 10px;
 
     background:
         linear-gradient(
@@ -832,15 +808,13 @@ a {
         );
 }
 
-
-/* ==========================================================
-   PANEL HEADING
-   ========================================================== */
-
 .panel h2 {
+    position: relative;
+
+    z-index: 1;
 
     margin:
-        0 0 18px;
+        0 0 20px;
 
     color:
         var(--text);
@@ -849,42 +823,36 @@ a {
         var(--serif);
 
     font-size:
-        20px;
+        21px;
 
     font-weight:
         700;
 }
 
-
-/* ==========================================================
-   TABLE WRAPPER
-   ========================================================== */
+/* ============================================================
+13. TABLE
+============================================================ */
 
 .panel table {
-
     width:
         100%;
 
+    min-width:
+        620px;
+
     border-collapse:
-        collapse;
+        separate;
+
+    border-spacing:
+        0;
 
     font-size:
         13px;
 }
 
-
-/* ==========================================================
-   TABLE HEADER
-   ========================================================== */
-
-table th {
-
+.panel table th {
     padding:
-        12px;
-
-    border-bottom:
-        1px solid
-        var(--border);
+        13px 12px;
 
     color:
         var(--text-muted);
@@ -896,7 +864,7 @@ table th {
         10px;
 
     font-weight:
-        600;
+        700;
 
     letter-spacing:
         1px;
@@ -906,64 +874,46 @@ table th {
 
     text-transform:
         uppercase;
-
-    white-space:
-        nowrap;
 }
 
-
-/* ==========================================================
-   TABLE DATA
-   ========================================================== */
-
-table td {
-
+.panel table td {
     padding:
-        13px 12px;
-
-    border-bottom:
-        1px solid
-        var(--border-light);
+        14px 12px;
 
     color:
         var(--text);
 
     vertical-align:
         middle;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.70);
 }
 
-
-table tbody tr {
-
+.panel table tbody tr {
     transition:
-        background 0.2s ease;
+        0.2s ease;
 }
 
-
-table tbody tr:hover {
-
+.panel table tbody tr:hover {
     background:
-        linear-gradient(
-            90deg,
-            rgba(139,92,246,0.045),
-            rgba(6,182,212,0.025)
-        );
+        rgba(255, 255, 255, 0.42);
+
+    transform:
+        scale(1.005);
 }
 
-
-table tbody tr:last-child td {
-
+.panel table tbody tr:last-child td {
     border-bottom:
         none;
 }
 
-
-/* ==========================================================
-   SMALL BUTTON
-   ========================================================== */
+/* ============================================================
+14. SMALL BUTTONS
+============================================================ */
 
 .btn-small {
-
     display:
         inline-flex;
 
@@ -974,22 +924,23 @@ table tbody tr:last-child td {
         center;
 
     min-height:
-        32px;
+        34px;
 
     padding:
-        6px 12px;
+        7px 14px;
 
     border:
-        none;
+        1px solid
+        rgba(255, 255, 255, 0.65);
 
     border-radius:
-        8px;
+        12px;
 
     background:
         linear-gradient(
-            135deg,
-            var(--purple-700),
-            var(--blue)
+            145deg,
+            #9682e9,
+            #6954c4
         );
 
     color:
@@ -1005,66 +956,44 @@ table tbody tr:last-child td {
         nowrap;
 
     box-shadow:
-        0 5px 12px
-        rgba(109,40,217,0.14);
+        5px 6px 12px rgba(55,48,91,0.20),
+        -4px -4px 9px rgba(255,255,255,0.72);
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+        0.2s ease;
 }
-
 
 .btn-small:hover {
-
     transform:
-        translateY(-2px);
+        translateY(-3px);
 
     box-shadow:
-        0 8px 18px
-        rgba(109,40,217,0.22);
+        7px 8px 16px rgba(55,48,91,0.23),
+        -5px -5px 11px rgba(255,255,255,0.82);
 }
-
 
 .btn-small:active {
-
     transform:
-        translateY(0);
+        translateY(1px);
+
+    box-shadow:
+        var(--clay-shadow-inset);
 }
-
-
-/* ==========================================================
-   DANGER BUTTON
-   ========================================================== */
 
 .btn-small.danger {
-
     background:
         linear-gradient(
-            135deg,
-            var(--red),
-            var(--red-dark)
+            145deg,
+            #ed7d89,
+            #d25260
         );
-
-    box-shadow:
-        0 5px 12px
-        rgba(239,68,68,0.15);
 }
 
-
-.btn-small.danger:hover {
-
-    box-shadow:
-        0 8px 18px
-        rgba(239,68,68,0.23);
-}
-
-
-/* ==========================================================
-   FORM ROW
-   ========================================================== */
+/* ============================================================
+15. FORM ROW
+============================================================ */
 
 .form-row {
-
     display:
         grid;
 
@@ -1072,232 +1001,200 @@ table tbody tr:last-child td {
         repeat(3, minmax(0, 1fr));
 
     gap:
-        13px;
+        14px;
 
     margin-bottom:
-        13px;
+        14px;
 }
-
-
-/* ==========================================================
-   FORM INPUTS
-   ========================================================== */
 
 .form-row input,
 .form-row textarea {
-
     width:
         100%;
 
+    min-width:
+        0;
+
     padding:
-        11px 13px;
+        12px 14px;
 
     border:
         1px solid
-        var(--border);
+        rgba(255, 255, 255, 0.70);
 
     border-radius:
-        9px;
+        14px;
 
     outline:
         none;
 
     background:
-        #fbfaff;
+        #e8e6f0;
 
     color:
         var(--text);
 
-    font-family:
-        var(--sans);
-
     font-size:
         13px;
 
+    box-shadow:
+        inset 5px 5px 11px rgba(55,48,91,0.12),
+        inset -5px -5px 11px rgba(255,255,255,0.90);
+
     transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
+        0.25s ease;
 }
 
-
 .form-row textarea {
-
     min-height:
-        100px;
+        105px;
 
     resize:
         vertical;
 }
 
-
 .form-row input::placeholder,
 .form-row textarea::placeholder {
-
     color:
-        #aaa3b5;
+        #aaa5b8;
 }
-
 
 .form-row input:focus,
 .form-row textarea:focus {
-
     border-color:
-        var(--purple);
+        rgba(117,97,216,0.45);
 
     background:
-        #ffffff;
+        #f1eff7;
 
     box-shadow:
-        0 0 0 4px
-        rgba(139,92,246,0.09);
+        inset 4px 4px 9px rgba(55,48,91,0.10),
+        inset -4px -4px 9px rgba(255,255,255,0.90),
+        0 0 0 4px rgba(117,97,216,0.10);
 }
 
+/* ============================================================
+16. PAGE SCROLLBAR
+Sidebar itself has NO scrollbar.
+============================================================ */
 
-/* ==========================================================
-   ERROR BANNER
-   ========================================================== */
-
-.error-banner {
-
-    display:
-        none;
-
-    margin-bottom:
-        20px;
-
-    padding:
-        12px 16px;
-
-    border:
-        1px solid
-        rgba(239,68,68,0.20);
-
-    border-radius:
-        10px;
-
-    background:
-        var(--red-soft);
-
-    color:
-        var(--red-dark);
-
-    font-size:
-        13px;
-
-    font-weight:
-        600;
-
-    animation:
-        errorAppear 0.4s ease both;
-}
-
-
-.error-banner.show {
-
-    display:
-        block;
-}
-
-
-/* ==========================================================
-   SCROLLBAR
-   ========================================================== */
-
-.sidebar::-webkit-scrollbar,
 body::-webkit-scrollbar {
-
     width:
-        7px;
+        8px;
+
+    height:
+        8px;
 }
 
-
-.sidebar::-webkit-scrollbar-track,
 body::-webkit-scrollbar-track {
-
     background:
         transparent;
 }
 
-
-.sidebar::-webkit-scrollbar-thumb {
-
-    background:
-        rgba(255,255,255,0.16);
-
-    border-radius:
-        20px;
-}
-
-
 body::-webkit-scrollbar-thumb {
-
     background:
-        #c9c1d8;
+        #aaa4bd;
 
     border-radius:
         20px;
 }
 
+body::-webkit-scrollbar-thumb:hover {
+    background:
+        #8f89a5;
+}
 
-/* ==========================================================
-   TABLET
-   769px — 1100px
-   ========================================================== */
+/* ============================================================
+17. PANEL SCROLLBAR
+Only panels containing wide tables may scroll.
+============================================================ */
 
-@media (min-width: 769px)
-       and (max-width: 1100px) {
+.panel::-webkit-scrollbar {
+    width:
+        6px;
 
+    height:
+        6px;
+}
+
+.panel::-webkit-scrollbar-track {
+    background:
+        transparent;
+}
+
+.panel::-webkit-scrollbar-thumb {
+    background:
+        #aaa4bd;
+
+    border-radius:
+        20px;
+}
+
+/* ============================================================
+18. TABLET
+============================================================ */
+
+@media (max-width: 1100px) {
     .admin-shell {
 
         grid-template-columns:
-            210px minmax(0,1fr);
-    }
+            210px minmax(0, 1fr);
 
+        gap:
+            16px;
+
+        padding:
+            16px;
+    }
 
     .sidebar {
 
+        top:
+            16px;
+
+        left:
+            16px;
+
+        width:
+            210px;
+
+        height:
+            calc(100vh - 32px);
+
         padding:
-            22px 13px;
+            20px 12px;
     }
-
-
-    .main {
-
-        padding:
-            28px 25px;
-    }
-
 
     .stat-grid {
 
         grid-template-columns:
-            repeat(2, minmax(0,1fr));
+            repeat(2, minmax(0, 1fr));
     }
-
 
     .form-row {
 
         grid-template-columns:
-            repeat(2, minmax(0,1fr));
+            repeat(2, minmax(0, 1fr));
     }
 }
 
+/* ============================================================
+19. MOBILE / TABLET
+============================================================ */
 
-/* ==========================================================
-   MOBILE NAVIGATION
-   481px — 768px
-   ========================================================== */
-
-@media (min-width: 481px)
-       and (max-width: 768px) {
-
+@media (max-width: 768px) {
     .admin-shell {
 
         display:
             block;
+
+        padding:
+            10px;
     }
 
+    /* ----------------------------------------
+       Compact mobile sidebar
+       ---------------------------------------- */
 
     .sidebar {
 
@@ -1307,6 +1204,9 @@ body::-webkit-scrollbar-thumb {
         top:
             auto;
 
+        left:
+            auto;
+
         width:
             100%;
 
@@ -1314,205 +1214,100 @@ body::-webkit-scrollbar-thumb {
             auto;
 
         min-height:
-            auto;
+            0;
+
+        margin-bottom:
+            16px;
 
         padding:
-            16px 18px;
+            13px;
+
+        border-radius:
+            21px;
+
+        /*
+           Absolutely no sidebar scrolling.
+        */
 
         overflow:
-            visible;
+            hidden !important;
+
+        overflow-y:
+            hidden !important;
+
+        overflow-x:
+            hidden !important;
+
+        scrollbar-width:
+            none;
+
+        -ms-overflow-style:
+            none;
     }
 
+    .sidebar::-webkit-scrollbar {
+
+        display:
+            none !important;
+
+        width:
+            0 !important;
+
+        height:
+            0 !important;
+    }
+
+    /* ----------------------------------------
+       Brand
+       ---------------------------------------- */
 
     .sidebar .brand {
 
         margin:
-            0 0 14px;
+            0 0 11px;
 
-        padding-bottom:
-            13px;
+        padding:
+            0 0 11px;
 
         font-size:
             18px;
     }
 
+    /* ----------------------------------------
+       Mobile navigation
+       ---------------------------------------- */
 
     .sidebar nav {
 
         display:
             flex;
+
+        flex-direction:
+            row;
+
+        flex-wrap:
+            wrap;
+
+        justify-content:
+            flex-start;
 
         gap:
             7px;
 
-        overflow-x:
-            auto;
-
-        padding-bottom:
-            4px;
-    }
-
-
-    .sidebar nav a {
-
-        flex:
-            0 0 auto;
-
-        margin:
-            0;
-
-        min-height:
-            40px;
-
-        padding:
-            8px 12px;
-
-        white-space:
-            nowrap;
-    }
-
-
-    .sidebar nav a::before {
-
-        display:
-            none;
-    }
-
-
-    .sidebar .logout {
-
-        position:
-            absolute;
-
-        top:
-            18px;
-
-        right:
-            18px;
-
-        margin:
-            0;
-    }
-
-
-    .main {
-
-        padding:
-            27px 20px;
-    }
-
-
-    .stat-grid {
-
-        grid-template-columns:
-            repeat(2, minmax(0,1fr));
-
-        gap:
-            13px;
-    }
-
-
-    .form-row {
-
-        grid-template-columns:
-            repeat(2, minmax(0,1fr));
-    }
-
-
-    .panel {
-
-        overflow-x:
-            auto;
-    }
-
-
-    .panel table {
-
-        min-width:
-            600px;
-    }
-}
-
-
-/* ==========================================================
-   MOBILE
-   320px — 480px
-   ========================================================== */
-
-@media (max-width: 480px) {
-
-    .admin-shell {
-
-        display:
-            block;
-    }
-
-
-    /* ---------- Sidebar ---------- */
-
-    .sidebar {
-
-        position:
-            relative;
-
-        top:
-            auto;
-
         width:
             100%;
 
-        height:
-            auto;
-
-        min-height:
-            auto;
-
-        padding:
-            15px 13px;
+        /*
+           NO SCROLLING.
+           Navigation wraps to another line.
+        */
 
         overflow:
-            visible;
+            visible !important;
+
+        padding:
+            0;
     }
-
-
-    .sidebar .brand {
-
-        margin:
-            0 0 12px;
-
-        padding-bottom:
-            12px;
-
-        font-size:
-            17px;
-    }
-
-
-    .sidebar nav {
-
-        display:
-            flex;
-
-        gap:
-            6px;
-
-        overflow-x:
-            auto;
-
-        padding-bottom:
-            4px;
-
-        scrollbar-width:
-            none;
-    }
-
-
-    .sidebar nav::-webkit-scrollbar {
-
-        display:
-            none;
-    }
-
 
     .sidebar nav a {
 
@@ -1522,70 +1317,68 @@ body::-webkit-scrollbar-thumb {
         min-height:
             38px;
 
-        margin:
-            0;
-
         padding:
-            8px 11px;
+            8px 13px;
 
         border-radius:
-            9px;
+            12px;
 
         font-size:
-            11.5px;
+            11px;
 
         white-space:
             nowrap;
     }
 
+    .sidebar nav a:hover {
 
-    .sidebar nav a::before {
-
-        display:
-            none;
+        transform:
+            translateY(-2px);
     }
 
+    /* ----------------------------------------
+       Logout
+       ---------------------------------------- */
 
     .sidebar .logout {
 
-        position:
-            absolute;
-
-        top:
-            14px;
-
-        right:
-            12px;
-
-        margin:
-            0;
+        width:
+            auto;
 
         min-height:
-            35px;
+            34px;
+
+        margin-top:
+            10px;
 
         padding:
-            7px 9px;
+            6px 10px;
+
+        border-radius:
+            11px;
 
         font-size:
             11px;
     }
 
-
-    /* ---------- Main ---------- */
+    /* ----------------------------------------
+       Main
+       ---------------------------------------- */
 
     .main {
 
-        padding:
-            22px 13px;
-    }
+        width:
+            100%;
 
+        padding:
+            16px 3px 25px;
+    }
 
     .main h1 {
 
         font-size:
-            27px;
+            28px;
     }
-
 
     .main p.sub {
 
@@ -1596,31 +1389,33 @@ body::-webkit-scrollbar-thumb {
             12.5px;
     }
 
-
-    /* ---------- Stats ---------- */
+    /* ----------------------------------------
+       Stats
+       ---------------------------------------- */
 
     .stat-grid {
 
         grid-template-columns:
-            1fr 1fr;
+            repeat(2, minmax(0, 1fr));
 
         gap:
-            10px;
+            12px;
 
         margin-bottom:
             20px;
     }
 
-
     .stat-card {
 
+        min-height:
+            125px;
+
         padding:
-            15px 13px;
+            17px 14px;
 
         border-radius:
-            13px;
+            19px;
     }
-
 
     .stat-card .label {
 
@@ -1628,95 +1423,40 @@ body::-webkit-scrollbar-thumb {
             8.5px;
 
         letter-spacing:
-            0.8px;
+            0.6px;
     }
 
-
     .stat-card .value {
-
-        margin-top:
-            6px;
 
         font-size:
             25px;
     }
 
-
-    /* ---------- Panels ---------- */
+    /* ----------------------------------------
+       Panels
+       ---------------------------------------- */
 
     .panel {
 
-        margin-bottom:
-            17px;
-
         padding:
-            15px;
+            16px;
+
+        margin-bottom:
+            18px;
 
         border-radius:
-            13px;
+            20px;
     }
-
-
-    .panel::before {
-
-        left:
-            15px;
-
-        width:
-            55px;
-    }
-
 
     .panel h2 {
 
         font-size:
             18px;
-
-        margin-bottom:
-            14px;
     }
 
-
-    /* ---------- Responsive Table ---------- */
-
-    .panel {
-
-        overflow-x:
-            auto;
-
-        -webkit-overflow-scrolling:
-            touch;
-    }
-
-
-    .panel table {
-
-        min-width:
-            650px;
-
-        font-size:
-            12px;
-    }
-
-
-    table th {
-
-        padding:
-            10px;
-
-        font-size:
-            9px;
-    }
-
-
-    table td {
-
-        padding:
-            10px;
-    }
-
-
-    /* ---------- Forms ---------- */
+    /* ----------------------------------------
+       Forms
+       ---------------------------------------- */
 
     .form-row {
 
@@ -1727,107 +1467,133 @@ body::-webkit-scrollbar-thumb {
             10px;
     }
 
-
     .form-row input,
     .form-row textarea {
 
         font-size:
             16px;
+    }
+}
+
+/* ============================================================
+20. SMALL MOBILE
+============================================================ */
+
+@media (max-width: 480px) {
+    .admin-shell {
 
         padding:
-            11px 12px;
+            7px;
     }
 
+    .sidebar {
 
-    .btn-small {
+        padding:
+            11px;
+
+        margin-bottom:
+            13px;
+
+        border-radius:
+            19px;
+
+        box-shadow:
+            8px 10px 20px rgba(44,36,79,0.25),
+            -6px -6px 15px rgba(255,255,255,0.55);
+    }
+
+    .sidebar .brand {
+
+        margin:
+            0 0 9px;
+
+        padding-bottom:
+            9px;
+
+        font-size:
+            16px;
+    }
+
+    .sidebar .brand::before {
+
+        width:
+            11px;
+
+        height:
+            11px;
+
+        flex-basis:
+            11px;
+    }
+
+    .sidebar nav {
+
+        gap:
+            5px;
+    }
+
+    .sidebar nav a {
+
+        min-height:
+            35px;
+
+        padding:
+            7px 10px;
+
+        font-size:
+            10px;
+
+        border-radius:
+            10px;
+    }
+
+    .sidebar .logout {
 
         min-height:
             31px;
 
         padding:
-            6px 10px;
-
-        font-size:
-            10.5px;
-    }
-
-
-    .error-banner {
-
-        padding:
-            10px 12px;
-
-        font-size:
-            11.5px;
-    }
-}
-
-
-/* ==========================================================
-   VERY SMALL MOBILE
-   UNDER 350px
-   ========================================================== */
-
-@media (max-width: 350px) {
-
-    .main {
-
-        padding:
-            19px 10px;
-    }
-
-
-    .sidebar {
-
-        padding:
-            13px 10px;
-    }
-
-
-    .sidebar .brand {
-
-        font-size:
-            15px;
-    }
-
-
-    .sidebar .logout {
+            5px 8px;
 
         font-size:
             10px;
     }
 
-
-    .sidebar nav a {
-
-        font-size:
-            10.5px;
+    .main {
 
         padding:
-            7px 9px;
+            14px 2px;
     }
-
 
     .main h1 {
 
         font-size:
-            24px;
+            25px;
     }
 
+    .main p.sub {
+
+        font-size:
+            12px;
+    }
 
     .stat-grid {
 
         gap:
-            7px;
+            9px;
     }
-
 
     .stat-card {
 
+        min-height:
+            108px;
+
         padding:
             13px 10px;
-    }
 
+        border-radius:
+            17px;
+    }
 
     .stat-card .label {
 
@@ -1835,130 +1601,251 @@ body::-webkit-scrollbar-thumb {
             7.5px;
     }
 
-
     .stat-card .value {
+
+        font-size:
+            21px;
+    }
+
+    .panel {
+
+        padding:
+            13px;
+
+        border-radius:
+            18px;
+    }
+
+    .panel h2 {
+
+        font-size:
+            17px;
+    }
+
+    .panel table {
+
+        min-width:
+            580px;
+    }
+
+    table th {
+
+        padding:
+            9px;
+
+        font-size:
+            9px;
+    }
+
+    table td {
+
+        padding:
+            10px;
+
+        font-size:
+            11px;
+    }
+
+    .btn-small {
+
+        min-height:
+            31px;
+
+        padding:
+            6px 9px;
+
+        font-size:
+            10px;
+    }
+}
+
+/* ============================================================
+21. VERY SMALL PHONES
+============================================================ */
+
+@media (max-width: 350px) {
+    .admin-shell {
+
+        padding:
+            5px;
+    }
+
+    .sidebar {
+
+        padding:
+            9px;
+    }
+
+    .sidebar .brand {
+
+        font-size:
+            14px;
+    }
+
+    .sidebar nav {
+
+        gap:
+            4px;
+    }
+
+    .sidebar nav a {
+
+        min-height:
+            33px;
+
+        padding:
+            6px 8px;
+
+        font-size:
+            9px;
+    }
+
+    .sidebar .logout {
+
+        font-size:
+            9px;
+    }
+
+    .main h1 {
 
         font-size:
             22px;
     }
 
+    .stat-card {
+
+        min-height:
+            100px;
+
+        padding:
+            11px 8px;
+    }
+
+    .stat-card .label {
+
+        font-size:
+            7px;
+    }
+
+    .stat-card .value {
+
+        font-size:
+            19px;
+    }
 
     .panel {
 
         padding:
-            12px;
+            10px;
     }
 }
 
-
-/* ==========================================================
-   LARGE DESKTOP
-   1400px+
-   ========================================================== */
+/* ============================================================
+22. LARGE DESKTOP
+============================================================ */
 
 @media (min-width: 1400px) {
-
     .admin-shell {
 
         grid-template-columns:
-            270px minmax(0,1fr);
+            270px minmax(0, 1fr);
+
+        gap:
+            24px;
+
+        padding:
+            24px;
     }
 
+    .sidebar {
+
+        top:
+            24px;
+
+        left:
+            24px;
+
+        width:
+            270px;
+
+        height:
+            calc(100vh - 48px);
+
+        padding:
+            27px 17px;
+    }
 
     .main {
 
         max-width:
-            1600px;
+            1650px;
 
         width:
             100%;
 
         padding:
-            45px 55px;
+            42px 48px;
     }
-
-
-    .sidebar {
-
-        padding:
-            30px 20px;
-    }
-
 
     .stat-grid {
 
         gap:
-            20px;
-    }
-
-
-    .panel {
-
-        padding:
-            26px;
+            22px;
     }
 }
 
-
-/* ==========================================================
-   ULTRA WIDE SCREENS
-   1800px+
-   ========================================================== */
+/* ============================================================
+23. ULTRA-WIDE DESKTOP
+============================================================ */
 
 @media (min-width: 1800px) {
-
     .main {
 
         margin:
             0 auto;
 
         max-width:
-            1700px;
+            1750px;
     }
 }
 
+/* ============================================================
+24. TOUCH DEVICES
+============================================================ */
 
-/* ==========================================================
-   TOUCH DEVICES
-   ========================================================== */
-
-@media (hover: none)
-       and (pointer: coarse) {
-
-    .stat-card:hover {
-
-        transform:
-            none;
-    }
-
-
-    .sidebar nav a:hover {
+@media (hover: none) and (pointer: coarse) {
+    .stat-card:hover,
+    .sidebar nav a:hover,
+    .btn-small:hover,
+    .sidebar .logout:hover {
 
         transform:
             none;
     }
 
-
-    .btn-small:hover {
+    .sidebar nav a:active {
 
         transform:
-            none;
+            scale(0.97);
+    }
+
+    .btn-small:active {
+
+        transform:
+            scale(0.97);
     }
 }
 
-
-/* ==========================================================
-   REDUCED MOTION
-   ========================================================== */
+/* ============================================================
+25. REDUCED MOTION
+============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-
     html {
 
         scroll-behavior:
             auto;
     }
-
 
     *,
     *::before,
@@ -1975,20 +1862,19 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-
-/* ==========================================================
-   ANIMATIONS
-   ========================================================== */
+/* ============================================================
+26. ANIMATIONS
+============================================================ */
 
 @keyframes cardAppear {
-
     from {
 
         opacity:
             0;
 
         transform:
-            translateY(15px);
+            translateY(15px)
+            scale(0.98);
     }
 
     to {
@@ -1997,20 +1883,20 @@ body::-webkit-scrollbar-thumb {
             1;
 
         transform:
-            translateY(0);
+            translateY(0)
+            scale(1);
     }
 }
-
 
 @keyframes panelAppear {
-
     from {
 
         opacity:
             0;
 
         transform:
-            translateY(18px);
+            translateY(18px)
+            scale(0.985);
     }
 
     to {
@@ -2019,28 +1905,7 @@ body::-webkit-scrollbar-thumb {
             1;
 
         transform:
-            translateY(0);
-    }
-}
-
-
-@keyframes errorAppear {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            translateY(-5px);
-    }
-
-    to {
-
-        opacity:
-            1;
-
-        transform:
-            translateY(0);
+            translateY(0)
+            scale(1);
     }
 }
